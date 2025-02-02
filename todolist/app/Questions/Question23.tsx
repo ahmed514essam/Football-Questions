@@ -1,3 +1,4 @@
+"use client" ;
 import { useState } from "react";
 import styles from "./Question.module.css";
 
@@ -5,11 +6,21 @@ const Question23 = () => {
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const correctAnswer = "d"; // Corrected answer to Cristiano Ronaldo
 
+  const [notalert , setNotAlert] = useState<boolean>(false);
+  const [corralert , setCorrAlert] = useState<boolean>(false);
+
+
   const Test = () => {
     if (selectedAnswer !== correctAnswer) {
-      alert("Wrong answer! The correct answer is highlighted in green.");
-    }
+setNotAlert(true);      
+    } else {
+setCorrAlert(true)    }
   };
+
+  const remAlert = () => {
+setCorrAlert(false);
+setNotAlert(false);
+  }
 
   return (
     <>
@@ -71,6 +82,26 @@ const Question23 = () => {
 
         <button onClick={Test} className={styles.TestingAnswers}>Send</button>
       </div>
+      {notalert ? (
+  <div onClick={remAlert} className={styles.overAllErAlert}>
+  <div className={styles.contentAlertNot}>
+<img src="sad.png"  alt="not correct" />
+<h2>Not Correct</h2>
+  </div>
+</div>
+) : null}
+
+
+
+{corralert ? (
+  <div onClick={remAlert} className={styles.overAllErAlert}>
+  <div className={styles.contentAlertNot}>
+<img src="happy.png"  alt="not correct" />
+<h2>Good </h2>
+  </div>
+</div>
+) : null}
+
     </>
   );
 };
