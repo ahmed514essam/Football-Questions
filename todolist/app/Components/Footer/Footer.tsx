@@ -5,7 +5,7 @@ const Footer = () => {
 return (
     <header className={styles.mainMyFooter}>
 
-<h1>End</h1>
+<h2>© 2025 Copyright | Football Quiz</h2>
 
 
     </header>
